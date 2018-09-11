@@ -1,0 +1,18 @@
+@import 'normalize';
+@import '~styles/utils';
+@import '~styles/settings';
+
+h1 {
+  @include fontSize($font-size-xxxl);
+  font-family: $font-family-main;
+}
+
+p, div {
+  font-family: $font-family;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}

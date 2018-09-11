@@ -1,0 +1,29 @@
+@import 'utils';
+
+$white: #fefefe;
+$primary-color: #b4e07a;
+$link-color: #35524A;
+$font-family: Helvetica, Sans-serif;
+$gray: rgba(200,200,200,1);
+$box-shadow-default: 1px -5px 5px -5px $gray;
+
+
+$font-size-xxxl: 36;
+$font-size-xxl: 24;
+$font-size-xl: 20;
+$font-size-l: 16;
+$font-size: 14;
+$font-size-xs: 10;
+$font-size-xxs: 8;
+
+$gutter-padding: 30px;
+
+$font-family: 'PT Serif', serif;
+$font-family-main: 'Poppins', sans-serif;
+
+
+// Breakpoints
+
+$breakpoint-tablet-portrait: 600px;
+$breakpoint-tablet-landscape: 900px;
+$breakpoint-desktop: 1200px;

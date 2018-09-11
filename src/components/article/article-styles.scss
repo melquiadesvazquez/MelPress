@@ -1,0 +1,25 @@
+@import '~styles/settings';
+@import '~styles/utils';
+
+.article {
+  margin: 10px 0px;
+
+  .article-image {
+    width: 180px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .article-title {
+    margin-top: 5px;
+    margin-bottom: 0;
+    color: $primary-color;
+  }
+
+  .article-author {
+    margin-top: 2px;
+    text-transform: uppercase;
+    @include fontSize($font-size);
+    color: $gray;
+  }
+}

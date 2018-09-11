@@ -1,0 +1,28 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "Muddy Waters at Newport",
+      "author": "Muddy Waters",
+      "imageUrl": "https://cps-static.rovicorp.com/3/JPG_1080/MI0001/751/MI0001751172.jpg?partner=allrovi.com"
+    },
+    {
+      "id": 2,
+      "title": "GOA",
+      "author": "GOA",
+      "imageUrl": "https://cps-static.rovicorp.com/3/JPG_1080/MI0001/751/MI0001751173.jpg?partner=allrovi.com"
+    },
+    {
+      "id": 3,
+      "title": "The sand",
+      "author": "Muddy Waters",
+      "imageUrl": "https://cps-static.rovicorp.com/3/JPG_1080/MI0001/751/MI0001751174.jpg?partner=allrovi.com"
+    },
+    {
+      "id": 4,
+      "title": "Snow",
+      "author": "Muddy Waters",
+      "imageUrl": "https://cps-static.rovicorp.com/3/JPG_1080/MI0001/751/MI0001751175.jpg?partner=allrovi.com"
+    }
+  ]
+}

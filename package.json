@@ -1,0 +1,55 @@
+{
+  "name": "MelPress",
+  "version": "1.0.0",
+  "description": "Práctica 4 para el módulo de Frontend Avanzado con Webpack, ES6 y SASS para el Keepcoding Web Development Bootcamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode=production",
+    "eslint": "eslint",
+    "start": "webpack-dev-server --mode=development --hot --inline",
+    "server": "json-server --watch --port=8000 ./src/data/articles.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melquiadesvazquez/MelPress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melquiadesvazquez/MelPress/issues"
+  },
+  "homepage": "https://github.com/melquiadesvazquez/MelPress#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^1.0.0",
+    "ejs": "^2.6.1",
+    "ejs-html-loader": "^3.1.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "file-loader": "^2.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "image-webpack-loader": "^4.3.1",
+    "mini-css-extract-plugin": "^0.4.2",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.18.0",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.8",
+    "webpack-merge": "^4.1.4"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "babel-polyfill": "^6.26.0",
+    "dotenv-webpack": "^1.5.7",
+    "json-server": "^0.14.0",
+    "webpack-plugin-critical": "^1.0.0"
+  }
+}
