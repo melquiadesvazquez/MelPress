@@ -6,7 +6,7 @@ export const createPost = ({
   const { id, name } = source;
   const image = urlToImage !== null ? urlToImage : meeseeksUrl;
   const post = document.createElement('div');
-  
+
   post.classList.add('col-md-6');
   post.innerHTML = `
     <div class="card shadow-sm">
