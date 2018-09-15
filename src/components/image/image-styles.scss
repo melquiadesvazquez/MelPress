@@ -1,5 +1,6 @@
-@import '~styles/layout.scss';
+@import '~styles/base.scss';
 
-img {
-
+.card-img-right {
+  height: 100%;
+  border-radius: 0 3px 3px 0;
 }

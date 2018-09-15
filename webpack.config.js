@@ -4,10 +4,10 @@ const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { CriticalPlugin } = require('webpack-plugin-critical');
-const dotenv = require('dotenv').config({ path: path.join(__dirname, '/.env') });
+const dotenv = require('dotenv').config({ path: path.join(__dirname, '/.env') }); // eslint-disable-line
+const Dotenv = require('dotenv-webpack');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const webpack = require('webpack');
 
 const page = ({
   title, template, chunks, filename
@@ -35,9 +35,7 @@ const commonConfig = {
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': dotenv.parsed
-    }),
+    new Dotenv(),
     page({
       title: 'Posts',
       template: path.join(__dirname, 'src', 'pages', 'posts', 'index.html'),

@@ -1,4 +1,4 @@
-@import 'normalize';
+@import '~styles/bootstrap-4.1.3/bootstrap';
 @import '~styles/utils';
 @import '~styles/settings';
 
@@ -12,10 +12,4 @@ h1 {
 
 p, div {
   font-family: $font-family;
-}
-
-.container {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
 }

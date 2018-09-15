@@ -1,5 +1,31 @@
-@import '~styles/layout.scss';
+@import '~styles/base.scss';
 
 header {
+  a {
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    color: $link-color;
+    @include fontSize($font-size-xl);
 
+    &:hover {
+      color: lighten($link-color, 25%);
+    }
+
+    display: none;
+
+    &.hamburger-icon {
+      display: block;
+      position: relative;
+    }
+    @include media-breakpoint-up(sm) {
+      display: block;
+      &.hamburger-icon {
+        display: none;
+      }
+    }
+    &.menu-active {
+      color: $white;
+    }
+  }
 }
