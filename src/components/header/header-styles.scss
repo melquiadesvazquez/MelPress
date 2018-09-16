@@ -1,12 +1,15 @@
-@import '~styles/base.scss';
+@import '~styles/breakpoints';
 
 header {
+  background: $white;
+  margin-bottom: $grid-gutter-width;
+
   a {
     text-transform: uppercase;
     font-weight: bold;
     text-decoration: none;
     color: $link-color;
-    @include fontSize($font-size-xl);
+    font-family: $font-family-base;
 
     &:hover {
       color: lighten($link-color, 25%);
@@ -18,7 +21,7 @@ header {
       display: block;
       position: relative;
     }
-    @include media-breakpoint-up(sm) {
+    @include for-tablet-portrait {
       display: block;
       &.hamburger-icon {
         display: none;

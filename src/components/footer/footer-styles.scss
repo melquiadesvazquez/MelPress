@@ -1,5 +1,8 @@
-@import '~styles/base.scss';
+@import '~styles/breakpoints';
 
 footer {
+  background: $white;
+  margin-top: $grid-gutter-width;
 
+  p {padding:0;}
 }

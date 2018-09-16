@@ -8,13 +8,13 @@ const loadPosts = (postsJson, posts) => {
     updatedPosts.innerHTML = 'No posts';
   } else {
     appendComponent(updatedPosts,
-      postsJson.map(postData => createPost(postData)));
+      postsJson.map((postData, index) => createPost(postData, index)));
   }
 };
 
 export const updatePosts = () => {
   const postsServiceInstance = new PostService();
-  const posts = document.getElementById('posts');
+  const posts = document.getElementById('main');
   posts.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
   postsServiceInstance.getPosts().then((postsJson) => {
     posts.innerHTML = '';
@@ -25,7 +25,7 @@ export const updatePosts = () => {
 };
 
 export const createPosts = () => {
-  const posts = document.getElementById('posts');
+  const posts = document.getElementById('main');
   updatePosts();
 
   return posts;

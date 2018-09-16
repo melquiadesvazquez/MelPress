@@ -1,0 +1,20 @@
+@import 'reboot';
+@import 'functions';
+@import 'breakpoints';
+@import 'layout';
+
+h1 {
+  font-family: $font-family-base;
+  font-size: $font-size-lg;
+}
+
+p, div {
+  font-family: $font-family-sans-serif;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+
