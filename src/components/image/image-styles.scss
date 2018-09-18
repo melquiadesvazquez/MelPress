@@ -1,6 +1,39 @@
 @import '~styles/breakpoints';
 
-.card-img-right {
-  height: 100%;
-  border-radius: 0 3px 3px 0;
+.post-img {
+  order: 1;
+  overflow: hidden;
+  margin: 0;
+
+  img {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@include for-tablet-landscape {
+  .post-img {
+    flex: 0 0 50%;
+    max-width: 50%;
+    order: 1;
+  }
+} 
+
+
+.post-right {
+  .post-img {order: 1;}
+
+  @include for-tablet-landscape {
+    .post-img {order: 2;}
+  }
+}
+
+.post-author-img {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border-radius: 15px;
+  float: left;
+  margin: 0 5px 0 0;
 }

@@ -1,5 +1,9 @@
-export const makeImage = (title, alt, src1x, src2x, src3x) => {
+export const makeImage = (title, alt, src) => {
+  const src1x = src;
+  const src2x = src;
+  const src3x = src;
   const image = document.createElement('img');
+
   image.title = title;
   image.alt = alt;
   image.src = src1x;
@@ -9,6 +13,15 @@ export const makeImage = (title, alt, src1x, src2x, src3x) => {
   return image;
 };
 
+export const getImageUrl = (src, size) => {
+  // const auxSize = (size !== 'undefined')? `-${size}` : '';
+  // const imgName = src.replace(/\.[^/.]+$/, '');
+  // const auxExtension = src.replace(/^[^/.]+/, '');
+
+  return src;
+};
+
 export default {
-  makeImage
+  makeImage,
+  getImageUrl
 };

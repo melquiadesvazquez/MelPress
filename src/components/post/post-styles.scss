@@ -1,7 +1,6 @@
 @import '~styles/breakpoints';
 
 .post {
-  background: $white;
   display: flex;
   flex-wrap: wrap;
   margin-bottom: $grid-gutter-width;
@@ -10,23 +9,13 @@
     position: relative;
     width: 100%;
 
-    &.post-img {
-      order: 1;
-      overflow: hidden;
-    }
-
     &.post-body {
+      background: $white;
       order: 2;
       padding: ($grid-gutter-width / 2);
     }
 
     @include for-tablet-landscape {
-      &.post-img {
-        flex: 0 0 50%;
-        max-width: 50%;
-        order: 1;
-      }
-
       &.post-body {
         flex: 0 0 50%;
         max-width: 50%;
@@ -36,12 +25,18 @@
   }
 
   &.post-right {
-    .post-img {order: 1;}
     .post-body {order: 2;}
 
     @include for-tablet-landscape {
-      .post-img {order: 2;}
       .post-body {order: 1;}
+    }
+  }
+
+  footer {
+    font-size: $font-size-sm;
+      
+    .post-author-name {
+      font-weight: 600;
     }
   }
 }

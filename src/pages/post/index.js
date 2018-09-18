@@ -1,15 +1,15 @@
 import { updateHeader } from 'components/header/header-component';
 import { updatePostDetail } from 'components/post-detail/post-detail-component';
 import queryString from 'query-string';
-import PostService from 'services/post-service';
+import ModelService from 'services/model-service';
 import 'styles/main.scss';
 
-const PostServiceInstance = new PostService();
+const PostServiceInstance = new ModelService('posts');
 const query = queryString.parse(window.location.search);
 const postId = query && query.id;
 
 if (postId) {
-  PostServiceInstance.getPost(postId).then((postJSON) => {
+  PostServiceInstance.getModel(postId).then((postJSON) => {
     updatePostDetail(postJSON);
   });
 }

@@ -3,11 +3,21 @@
 <head>
   <%- include('../partials/head.ejs') %>
 </head>
-<body>
-  <%- include('../partials/header.ejs') %>
-  <div class="container">
-    <div id="post-detail" class="post-detail"></div>
+<body>  
+  <%- include('../partials/header.ejs') %> 
+
+  <div class="box">
+    <div class="box-row">  
+
+      <%- include('../partials/sidebar-left.ejs') %>
+      
+      <div id="main" class="box-col container"></div> 
+          
+      <%- include('../partials/sidebar-right.ejs') %>
+      
+    </div>
   </div>
+
   <%- include('../partials/footer.ejs') %>
 </body>
 </html>
