@@ -13,6 +13,7 @@ export const createPost = async ({
   const image = postImage !== undefined ? getImageUrl(postImage, '480') : fallbackPostImgUrl;
   const authorImageAux = authorImage !== undefined ? getImageUrl(authorImage, '480') : fallbackAuthorImgUrl;
   const video = postVideo !== undefined ? getVideoUrl(postVideo, '480') : false;
+  const postComments = comments !== undefined ? comments : [];
 
   const mediaHTML = (video === false)
     ? `<figure class="post-col post-img">
@@ -20,8 +21,9 @@ export const createPost = async ({
       </figure>`
     : `<div class="post-col post-video">
         <div class="post-video-wrapper">
-          <iframe src="${video}"
-            frameborder="0" 
+          <iframe src="${video}?rel=0&amp;controls=0&amp;showinfo=0"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
             webkitallowfullscreen
             mozallowfullscreen
             allowfullscreen>
@@ -49,7 +51,7 @@ export const createPost = async ({
         <p>
           <span class="post-author-name">${authorName}</span> | 
           <time class="post-time" datetime="${publishedAt}">${date}</time> | 
-          0 Comments
+          <a href="/post/?id=${id}#comments">${postComments.length} Comments</a>
         </p> 
       </footer>
     </div>

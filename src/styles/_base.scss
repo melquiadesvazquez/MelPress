@@ -16,5 +16,37 @@ img {
   max-width: 100%;
 }
 
+.block:before, .block:after {
+  content:"";
+  display:table;
+}
+
+.block:after {
+  clear:both;
+}
+
+.block {
+  zoom:1;
+}
+
+
+ul.block {
+  list-style: none;
+  margin: 0;
+
+  > li {
+    float: left;
+  }
+}
+
+.float-left {
+  display: block;
+  float: left;
+}
+
+.float-right {
+  display: block;
+  float: right;
+}
 
 

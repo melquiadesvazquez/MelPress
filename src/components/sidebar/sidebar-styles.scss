@@ -1,3 +1,7 @@
 .sidebar-left, .sidebar-right {
   p {background: $white;}
 }
+
+.sidebar-left {
+  p {padding: ($grid-gutter-width / 2);}
+}

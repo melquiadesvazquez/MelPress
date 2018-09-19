@@ -2,33 +2,33 @@ import { appendComponent } from 'utils/html';
 import { createPost } from 'components/post/post-component';
 import ModelService from 'services/model-service';
 
-const loadPosts = (postsJson, posts) => {
+const loadPosts = (json, posts) => {
   const updatedPosts = posts;
-  if (postsJson.length === 0) {
+  if (json.length === 0) {
     updatedPosts.innerHTML = 'No posts';
   } else {
-    const promises = postsJson.map(
-      (postData, index) => createPost(postData, index).then(response => response)
+    const promises = json.map(
+      (data, index) => createPost(data, index).then(response => response)
     );
     Promise.all(promises).then(results => appendComponent(updatedPosts, results));
   }
 };
 
-export const updatePosts = () => {
+export const updatePosts = (posts) => {
+  const wrapper = posts;
   const postsServiceInstance = new ModelService('posts');
-  const posts = document.getElementById('main');
-  posts.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-  postsServiceInstance.getModels().then((postsJson) => {
-    posts.innerHTML = '';
-    loadPosts(postsJson, posts);
+  wrapper.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+  postsServiceInstance.getModels().then((json) => {
+    wrapper.innerHTML = '';
+    loadPosts(json, wrapper);
   }).catch(() => {
-    posts.innerHTML = 'There was an error, please reload';
+    wrapper.innerHTML = 'There was an error, please reload';
   });
 };
 
 export const createPosts = () => {
-  const posts = document.getElementById('main');
-  updatePosts();
+  const posts = document.getElementById('posts');
+  updatePosts(posts);
 
   return posts;
 };

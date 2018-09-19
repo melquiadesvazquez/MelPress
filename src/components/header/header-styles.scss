@@ -1,34 +1,85 @@
 @import '~styles/breakpoints';
 
-header {
+#header {
   background: $white;
   margin-bottom: $grid-gutter-width;
 
+  .container {
+    width: 100%;
+    padding: ($grid-gutter-width / 2);
+    margin: 0 auto;
+
+    @include for-desktop {
+      max-width: 90%;
+    }
+  }
+
+  h1 {
+    float:left;
+    font-size: 1.5rem;
+    padding-bottom: 0;
+    position:relative;
+    z-index: 3;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
+
+#menuTop {
+  width: 100%;
+  position:absolute;
+  top:1.54rem;
+  left:0;
+  z-index: 2;
+
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    
+    li {
+      display: block;
+      margin: 0 10px;
+    }
+  }
+
   a {
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 600;
     text-decoration: none;
     color: $link-color;
     font-family: $font-family-base;
 
     &:hover {
-      color: lighten($link-color, 25%);
+      color: lighten($link-color, 50%);
     }
 
-    display: none;
-
-    &.hamburger-icon {
-      display: block;
-      position: relative;
-    }
-    @include for-tablet-portrait {
-      display: block;
-      &.hamburger-icon {
-        display: none;
-      }
-    }
     &.menu-active {
       color: $white;
     }
+  }
+}
+
+#menuBtn {
+  display: block;
+  position: relative;
+
+  @include for-tablet-portrait {
+    display: none;
+  }
+}
+
+#menuSearch {
+  padding-top:.5rem;
+
+  li {
+    display: block;
+    margin: 0 10px;
   }
 }

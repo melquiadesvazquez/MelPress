@@ -13,4 +13,3 @@ if (postId) {
     updatePostDetail(postJSON);
   });
 }
-updateHeader({ title: 'Post - Detail', active: 'post-detail' });

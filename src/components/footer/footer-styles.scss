@@ -1,8 +1,18 @@
 @import '~styles/breakpoints';
 
-footer {
+#footer {
   background: $white;
   margin-top: $grid-gutter-width;
+
+  .container {
+    width: 100%;
+    padding: ($grid-gutter-width / 2);
+    margin: 0 auto;
+
+    @include for-desktop {
+      max-width: 90%;
+    }
+  }
 
   p {padding:0;}
 }

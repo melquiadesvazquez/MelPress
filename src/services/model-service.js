@@ -6,8 +6,16 @@ class ModelService {
     this.model = model;
   }
 
-  async getModels() {
-    return this.APIServiceInstance.get(this.model);
+  async getModels(filter) {
+    const auxFilter = filter || false;
+    let result;
+    if (auxFilter === false) {
+      result = this.APIServiceInstance.get(this.model);
+    } else {
+      console.log(`${this.model}?${auxFilter.map(id => `id=${id}`).join('&')}`)
+      result = this.APIServiceInstance.get(`${this.model}?${auxFilter.map(id => `id=${id}`).join('&')}`);
+    }
+    return result;
   }
 
   async getModel(id) {

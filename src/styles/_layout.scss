@@ -1,13 +1,12 @@
-
-header, footer {
-  padding: ($grid-gutter-width / 2);
-}
-
 .box {
   margin: 0 auto;
   width: 100%;
   padding-right: ($grid-gutter-width / 2);
   padding-left: ($grid-gutter-width / 2);
+
+  @include for-desktop {
+    max-width: 90%;
+  }
 
   .box-row {
     display: flex;
@@ -53,6 +52,11 @@ header, footer {
         &.container {
           flex: 0 0 60%;
           max-width: 60%;
+
+          &.wide {
+            flex: 0 0 80%;
+            max-width: 800%;
+          }
         }
       } 
     }
