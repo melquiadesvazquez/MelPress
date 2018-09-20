@@ -1,42 +1,28 @@
-import fallbackPostImgUrl from 'assets/defaultPostImage.jpg';
-import fallbackAuthorImgUrl from 'assets/defaultAuthorImage.jpg';
-import { getImageUrl } from 'components/image/image-component';
-import { getVideoUrl } from 'components/video/video-component';
+import { getImageHTML } from 'components/image/image-component';
+import { getVideoHTML } from 'components/video/video-component';
 import { formatDate } from 'utils/html';
 import ModelService from 'services/model-service';
 
 export const createPost = async ({
-  id, author, title, description, postImage, postVideo, publishedAt, comments
-} = { title: 'No title', author: 'No author' }, index) => {
+  id, author = 'No author', comments = [], title = 'No title', description, postImage, postVideo, publishedAt
+} = {}, index) => {
   const authorServiceInstance = new ModelService('authors');
   const { authorName, authorImage } = await authorServiceInstance.getModel(author);
-  const image = postImage !== undefined ? getImageUrl(postImage, '480') : fallbackPostImgUrl;
-  const authorImageAux = authorImage !== undefined ? getImageUrl(authorImage, '480') : fallbackAuthorImgUrl;
-  const video = postVideo !== undefined ? getVideoUrl(postVideo, '480') : false;
-  const postComments = comments !== undefined ? comments : [];
+  const authorImageHTML = getImageHTML({ src: authorImage, title: authorName });
 
-  const mediaHTML = (video === false)
-    ? `<figure class="post-col post-img">
-        <a class="post-link" href="/post/?id=${id}"><img src="${image}" alt="${title}"></a>
-      </figure>`
-    : `<div class="post-col post-video">
-        <div class="post-video-wrapper">
-          <iframe src="${video}?rel=0&amp;controls=0&amp;showinfo=0"
-            frameborder="0"
-            allow="autoplay; encrypted-media"
-            webkitallowfullscreen
-            mozallowfullscreen
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>`;
+  const image = getImageHTML({
+    src: postImage, title, model: 'post', id
+  });
+  const video = getVideoHTML(postVideo);
+  const mediaHTML = (video === false) ? image : video;
 
   const date = formatDate(publishedAt);
-  const post = document.createElement('article');
+  const wrapper = document.createElement('article');
 
-  post.classList.add('post');
-  if (index % 2 !== 0) post.classList.add('post-right');
-  post.innerHTML = `
+  wrapper.classList.add('post');
+  if (index % 2 !== 0) wrapper.classList.add('post-right');
+
+  wrapper.innerHTML = `
     ${mediaHTML}
     <div class="post-col post-body">
       <header>
@@ -45,19 +31,17 @@ export const createPost = async ({
         <p><a class="post-link" href="/post/?id=${id}">Continue reading</a></p>
       </header>
       <footer>
-        <figure class="post-author-img">
-        <img src="${authorImageAux}" alt="${authorName}">
-        </figure>
+        ${authorImageHTML}
         <p>
           <span class="post-author-name">${authorName}</span> | 
           <time class="post-time" datetime="${publishedAt}">${date}</time> | 
-          <a href="/post/?id=${id}#comments">${postComments.length} Comments</a>
+          <a href="/post/?id=${id}#comments">${comments.length} Comments</a>
         </p> 
       </footer>
     </div>
   `;
 
-  return post;
+  return wrapper;
 };
 
 export default {

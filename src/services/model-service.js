@@ -12,7 +12,6 @@ class ModelService {
     if (auxFilter === false) {
       result = this.APIServiceInstance.get(this.model);
     } else {
-      console.log(`${this.model}?${auxFilter.map(id => `id=${id}`).join('&')}`)
       result = this.APIServiceInstance.get(`${this.model}?${auxFilter.map(id => `id=${id}`).join('&')}`);
     }
     return result;

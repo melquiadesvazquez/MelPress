@@ -3,8 +3,11 @@
 @import 'breakpoints';
 @import 'layout';
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-impact;
+}
+
 h1 {
-  font-family: $font-family-base;
   font-size: $font-size-lg;
 }
 
@@ -47,6 +50,14 @@ ul.block {
 .float-right {
   display: block;
   float: right;
+}
+
+.d-inline-sm {
+  display:none;
+
+  @include for-tablet-portrait {
+    display: inline;
+  }
 }
 
 
