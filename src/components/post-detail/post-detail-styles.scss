@@ -1,5 +1,28 @@
 @import '~styles/breakpoints';
 
 .post-detail {
+  .post-col, .post-col.post-body {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 
+  .post-likes {
+    outline-width: 0;
+    @include fontSize($font-size-sm);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.5s ease;
+    
+    &.active {
+      color: $red;
+
+      .fa-heart {
+        animation-name: heartBeat;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+    }   
+  }
 }

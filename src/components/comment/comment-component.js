@@ -1,7 +1,7 @@
 import { formatDate } from 'utils/html';
 
 export const createComment = async ({
-  name, title, description, publishedAt
+  name, surname, title, description, publishedAt
 } = { title: 'No title', author: 'No author' }) => {
   const date = formatDate(publishedAt);
   const comment = document.createElement('article');
@@ -14,7 +14,7 @@ export const createComment = async ({
       </header>
       <footer>
         <p>
-          <span class="comment-author-name">${name}</span> | 
+          <span class="comment-author-name">${name} ${surname}</span> | 
           <time class="comment-time" datetime="${publishedAt}">${date}</time>
         </p> 
       </footer>

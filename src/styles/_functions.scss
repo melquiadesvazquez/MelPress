@@ -7,3 +7,12 @@
   font-size: #{$size}px; // Fallback in px
   font-size: calculateRem($size);
 }
+
+@keyframes heartBeat {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}

@@ -52,7 +52,7 @@
   }
 }
 
-#menuTop {  
+#menuTop { 
   background: $white;
   padding:0;
   flex: 0 0 100%;
@@ -65,6 +65,13 @@
     background: none;
     flex: auto;
     order: 2;
+  }
+
+  &.active {
+    ul {display:block;}
+    #menuBtn {
+      .fa-bars:before {content:"\f00d";}
+    }
   }
 
   ul {
@@ -101,7 +108,7 @@
     font-family: $font-family-impact;
 
     &:hover {
-      color: lighten($link-color, 50%);
+      color: $link-hover-color;
     }
 
     &.menu-active {
@@ -152,7 +159,7 @@
         display: block;
 
         &:hover {
-          color: lighten($link-color, 50%);
+          color: $link-hover-color;
         }
       }
     }

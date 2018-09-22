@@ -1,14 +1,38 @@
 import { getImageHTML } from 'components/image/image-component';
 import { getVideoHTML } from 'components/video/video-component';
 import { createComments } from 'components/comments/comments-component';
+import { updateCommentForm } from 'components/comment-form/comment-form-component';
 import { formatDate } from 'utils/html';
 import ModelService from 'services/model-service';
+import PubSub from 'pubsub-js';
+
+const isLiked = id => localStorage.getItem(`post-${id}`);
+
+const toggleLike = (id, likes) => {
+  let increment = 1;
+  let liked = 'true';
+
+  if (isLiked(id) === 'true') {
+    increment = 0;
+    liked = 'false';
+  }
+
+  localStorage.setItem(`post-${id}`, liked);
+  document.querySelector('.post-likes-count').innerHTML = likes + increment;
+};
+
+const setInitialLikeValue = (likeButton, liked, likes) => {
+  if (liked === 'true') {
+    likeButton.classList.add('active');
+    document.querySelector('.post-likes-count').innerHTML = likes + 1;
+  }
+};
 
 export const updatePostDetail = async ({
-  id, author = 'No author', comments = [], title = 'No title', content, postImage, postVideo, publishedAt
+  id, author = 'No author', likes = 0, title = 'No title', content, postImage, postVideo, publishedAt
 } = {}) => {
-  const authorServiceInstance = new ModelService('authors');
-  const { authorName, authorImage } = await authorServiceInstance.getModel(author);
+  const ModelServiceInstance = new ModelService('authors');
+  const { authorName, authorImage } = await ModelServiceInstance.getModel(author);
   const authorImageHTML = getImageHTML({ src: authorImage, title: authorName });
 
   const image = getImageHTML({
@@ -21,7 +45,7 @@ export const updatePostDetail = async ({
   const wrapper = document.getElementById('post');
 
   wrapper.innerHTML = `
-    <article class="post">
+    <article class="post post-detail">
       ${mediaHTML}
       <div class="post-col post-body">
         <header>
@@ -33,14 +57,28 @@ export const updatePostDetail = async ({
           <p>
             <span class="post-author-name">${authorName}</span> | 
             <time class="post-time" datetime="${publishedAt}">${date}</time> | 
-            <a href="#"><i class="fa fa-heart"></i> 19</a>
+            <button class="post-likes"><i class="fa fa-heart"></i> <span class="post-likes-count">${likes}</span></button>
           </p>          
         </footer>
       </div>
     </article>
   `;
 
-  createComments(comments);
+  const likeButton = document.querySelector('.post-likes');
+
+  setInitialLikeValue(likeButton, isLiked(id), likes);
+
+  likeButton.addEventListener('click', () => {
+    likeButton.classList.toggle('active');
+    toggleLike(id, likes);
+  });
+
+  PubSub.subscribe('reloadComments', () => {
+    createComments(id);
+  });
+
+  updateCommentForm(id);
+  PubSub.publish('reloadComments');
 };
 
 export default {

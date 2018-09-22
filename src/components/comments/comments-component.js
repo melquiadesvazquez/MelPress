@@ -10,15 +10,17 @@ const loadComments = (json, comments) => {
     const promises = json.map(
       data => createComment(data).then(response => response)
     );
-    Promise.all(promises).then(results => appendComponent(wrapper, results));
+    Promise.all(promises).then((results) => {
+      appendComponent(wrapper, results);
+    });
   }
 };
 
-export const updateComments = (comments, ids) => {
+export const updateComments = (comments, id) => {
   const wrapper = comments;
-  const commentsServiceInstance = new ModelService('comments');
+  const ModelServiceInstance = new ModelService('comments');
   wrapper.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-  commentsServiceInstance.getModels(ids).then((json) => {
+  ModelServiceInstance.getModels(`post=${id}`).then((json) => {
     wrapper.innerHTML = '';
     loadComments(json, wrapper);
   }).catch(() => {
@@ -26,9 +28,9 @@ export const updateComments = (comments, ids) => {
   });
 };
 
-export const createComments = (ids) => {
+export const createComments = (id) => {
   const comments = document.getElementById('comments');
-  updateComments(comments, ids);
+  updateComments(comments, id);
 
   return comments;
 };

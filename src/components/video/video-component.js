@@ -3,7 +3,7 @@ export const getVideoHTML = (src) => {
   if (src !== undefined) {
     result = `<div class="post-col post-video">
                 <div class="post-video-wrapper">
-                  <iframe src="${src}?title=0&byline=0&portrait=0"
+                  <iframe src="${src}?controls=0&showinfo=0&rel=0"
                     frameborder="0" 
                     webkitallowfullscreen
                     mozallowfullscreen

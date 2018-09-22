@@ -13,15 +13,13 @@
       background: $white;
       order: 2;
       padding: ($grid-gutter-width / 2);
-    }
 
-    @include for-tablet-landscape {
-      &.post-body {
-        flex: 0 0 50%;
-        max-width: 50%;
-        order: 2;
-      }
-    } 
+      @include for-tablet-landscape {
+          flex: 0 0 70%;
+          max-width: 70%;
+          order: 2;
+      } 
+    }
   }
 
   &.post-right {
@@ -29,6 +27,15 @@
 
     @include for-tablet-landscape {
       .post-body {order: 1;}
+    }
+  }
+
+  .post-link {
+    text-decoration: $link-decoration;
+    font-weight: $font-weight-bold;
+
+    &:after {
+      content: " \21C0";
     }
   }
 

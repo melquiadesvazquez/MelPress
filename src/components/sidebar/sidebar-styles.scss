@@ -1,8 +1,16 @@
 .sidebar-left, .sidebar-right {
   margin-bottom: $grid-gutter-width;
   p {background: $white;}
+
+  article {
+    background: $white;
+    padding: 15px;
+    margin-bottom: 30px;
+  }
+
+  figure {
+    background: $white;
+    margin-bottom: 30px;
+  }
 }
 
-.sidebar-left {
-  p {padding: ($grid-gutter-width / 2);}
-}

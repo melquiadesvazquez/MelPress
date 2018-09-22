@@ -12,7 +12,7 @@ class ModelService {
     if (auxFilter === false) {
       result = this.APIServiceInstance.get(this.model);
     } else {
-      result = this.APIServiceInstance.get(`${this.model}?${auxFilter.map(id => `id=${id}`).join('&')}`);
+      result = this.APIServiceInstance.get(`${this.model}?${filter}`);
     }
     return result;
   }
@@ -23,6 +23,10 @@ class ModelService {
 
   async postModel(object) {
     return this.APIServiceInstance.post(object, this.model);
+  }
+
+  async updateModel(object, id) {
+    return this.APIServiceInstance.update(object, `${this.model}/${id}`);
   }
 }
 

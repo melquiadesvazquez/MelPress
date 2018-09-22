@@ -12,18 +12,18 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const page = ({
   title, template, chunks, filename
 }) => (
-    new HtmlWebpackPlugin(
-      {
-        title,
-        template,
-        chunks,
-        minify: {
-          collapseWhitespace: true
-        },
-        filename
-      }
-    )
-  );
+  new HtmlWebpackPlugin(
+    {
+      title,
+      template,
+      chunks,
+      minify: {
+        collapseWhitespace: true
+      },
+      filename
+    }
+  )
+);
 
 const commonConfig = {
   entry: {
@@ -72,20 +72,6 @@ const commonConfig = {
           }
         ]
       },
-      /*
-      {
-        test: /\.(gif|png|jpe?g|svg)$/i,
-        use: [
-          'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              name: 'assets/[name].[hash].[ext]'
-            }
-          }
-        ]
-      },
-      */
       {
         test: /\.(html|ejs)$/,
         use: ['html-loader', 'ejs-html-loader']
