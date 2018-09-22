@@ -28,7 +28,7 @@ const setInitialLikeValue = (likeButton, liked, likes) => {
   }
 };
 
-export const updatePostDetail = async ({
+export const loadPostDetail = async ({
   id, author = 'No author', likes = 0, title = 'No title', content, postImage, postVideo, publishedAt
 } = {}) => {
   const ModelServiceInstance = new ModelService('authors');
@@ -50,7 +50,8 @@ export const updatePostDetail = async ({
       <div class="post-col post-body">
         <header>
           <h2 class="post-title">${title}</h2>
-          <p class="post-text">${content}</p>
+          <div class="post-text">${content}</div>
+          <p class="text-right"><a class="post-link" href="/">Back home</a></p>
         </header>
         <footer>
           ${authorImageHTML}
@@ -81,6 +82,16 @@ export const updatePostDetail = async ({
   PubSub.publish('reloadComments');
 };
 
+export const createPost = (id) => {
+  const wrapper = document.getElementById('post');
+  const ModelServiceInstance = new ModelService('posts');
+
+  wrapper.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+  ModelServiceInstance.getModel(id).then((postJSON) => {
+    loadPostDetail(postJSON);
+  });
+};
+
 export default {
-  updatePostDetail
+  createPost
 };

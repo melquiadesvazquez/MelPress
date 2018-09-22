@@ -5,7 +5,7 @@ import ModelService from 'services/model-service';
 const loadPosts = (json, posts) => {
   const updatedPosts = posts;
   if (json.length === 0) {
-    updatedPosts.innerHTML = 'No posts';
+    updatedPosts.innerHTML = 'Posts could not be loaded';
   } else {
     const ModelServiceInstance = new ModelService('comments');
     ModelServiceInstance.getModels().then((jsonComments) => {
@@ -16,7 +16,7 @@ const loadPosts = (json, posts) => {
       );
       Promise.all(promises).then(results => appendComponent(updatedPosts, results));
     }).catch(() => {
-      updatedPosts.innerHTML = 'No posts';
+      updatedPosts.innerHTML = 'Posts could not be loaded';
     });
   }
 };
@@ -24,6 +24,7 @@ const loadPosts = (json, posts) => {
 export const updatePosts = (posts) => {
   const wrapper = posts;
   const ModelServiceInstance = new ModelService('posts');
+
   wrapper.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
   ModelServiceInstance.getModels().then((json) => {
     wrapper.innerHTML = '';

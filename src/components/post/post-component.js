@@ -11,7 +11,7 @@ export const createPost = async ({
   const authorImageHTML = getImageHTML({ src: authorImage, title: authorName });
 
   const image = getImageHTML({
-    src: postImage, title, model: 'post', id
+    src: postImage, title, model: 'post', id, link: true
   });
   const video = getVideoHTML(postVideo);
   const mediaHTML = (video === false) ? image : video;
@@ -29,7 +29,7 @@ export const createPost = async ({
     <div class="post-col post-body">
       <header>
         <h2 class="post-title"><a href="/post/?id=${id}">${title}</a></h2>
-        <p class="post-text">${description}</p>
+        <div class="post-text">${description}</div>
         <p><a class="post-link" href="/post/?id=${id}">Continue reading</a></p>
       </header>
       <footer>

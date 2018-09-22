@@ -1,6 +1,9 @@
 class APIService {
   constructor() {
-    this.baseUrl = `${process.env.API_PROTOCOL}://${process.env.API_HOST}:${process.env.API_PORT}/`;
+    this.baseUrl = `${process.env.DEMO_API_PROTOCOL}://${process.env.DEMO_API_HOST}${process.env.DEMO_API_PORT}${process.env.DEMO_API_BASE}/`;
+    if (process.env.NODE_ENV !== 'development') {
+      this.baseUrl = `${process.env.LIVE_API_PROTOCOL}://${process.env.LIVE_API_HOST}${process.env.LIVE_API_PORT}${process.env.LIVE_API_BASE}/`;
+    }
   }
 
   async get(uri) {

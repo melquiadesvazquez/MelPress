@@ -22,6 +22,10 @@
     }
   }
 
+  .post-title {
+    a {text-decoration: none;}
+  }
+
   &.post-right {
     .post-body {order: 2;}
 
@@ -35,8 +39,16 @@
     font-weight: $font-weight-bold;
 
     &:after {
-      content: " \21C0";
+      content: " \21C1";
     }
+  }
+
+  .text-right .post-link:before {
+    content: "\21BD ";
+  }
+
+  .text-right .post-link:after {
+    content: "";
   }
 
   header, footer {

@@ -5,7 +5,7 @@ import ModelService from 'services/model-service';
 const loadComments = (json, comments) => {
   const wrapper = comments;
   if (json.length === 0) {
-    wrapper.innerHTML = 'No comments';
+    wrapper.innerHTML = '<article class="comment">No comments yet</article>';
   } else {
     const promises = json.map(
       data => createComment(data).then(response => response)

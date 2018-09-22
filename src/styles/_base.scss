@@ -19,6 +19,14 @@ img {
   max-width: 100%;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
 .block:before, .block:after {
   content:"";
   display:table;
