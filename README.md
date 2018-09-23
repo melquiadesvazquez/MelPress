@@ -4,7 +4,7 @@
 
 Website similar to https://medium.com (blogging platform) built with Webpack, ES6 and SASS.
 
-Demo
+Live demo available on http://melpress.surge.sh
 
 ## Prerequisites
 
@@ -56,9 +56,9 @@ Open your browser and go to:
 + Website &ndash; http://localhost:3030
 + Alternatively, check the live demo [here](http://melpress.surge.sh)
 
-![Melpress homepage](https://raw.githubusercontent.com/melquiadesvazquez/MelPress/master/public/src/assets/web1.jpg)
+![Melpress homepage](https://raw.githubusercontent.com/melquiadesvazquez/MelPress/master/src/assets/web1.jpg)
 
-![Melpress post page](https://raw.githubusercontent.com/melquiadesvazquez/MelPress/master/public/src/assets/web2.jpg)
+![Melpress post page](https://raw.githubusercontent.com/melquiadesvazquez/MelPress/master/src/assets/web2.jpg)
 
 ## Built with
 
@@ -66,6 +66,10 @@ Open your browser and go to:
 + [Webpack](https://webpack.js.org/) - JavaScript module bundler
 + [JSON server](https://github.com/typicode/json-server) - REST API with CRUD operations based on a json file
 + [SASS](https://sass-lang.com/) - CSS preprocessor scripting language
+
+## Restrictions
+
++ The live demo is connected with a third party JSON server on https://my-json-server.typicode.com, due to this, database updates are not allowed and new comments won't be created. However, that functionality should work on local.
 
 ## License
 
