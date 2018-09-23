@@ -6,8 +6,10 @@ import { formatDate } from 'utils/html';
 import ModelService from 'services/model-service';
 import PubSub from 'pubsub-js';
 
+// Checks if the post has been liked on the localStorage
 const isLiked = id => localStorage.getItem(`post-${id}`);
 
+// Toggles the like and sum that with the existing likes
 const toggleLike = (id, likes) => {
   let increment = 1;
   let liked = 'true';
@@ -21,6 +23,7 @@ const toggleLike = (id, likes) => {
   document.querySelector('.post-likes-count').innerHTML = likes + increment;
 };
 
+// Sets the initial value of the like button
 const setInitialLikeValue = (likeButton, liked, likes) => {
   if (liked === 'true') {
     likeButton.classList.add('active');
@@ -28,15 +31,16 @@ const setInitialLikeValue = (likeButton, liked, likes) => {
   }
 };
 
+// Loads the post from the database
 export const loadPostDetail = async ({
   id, author = 'No author', likes = 0, title = 'No title', content = 'No content', postImage, postVideo, publishedAt
 } = {}) => {
   const ModelServiceInstance = new ModelService('authors');
   const { authorName, authorImage } = await ModelServiceInstance.getModel(author);
-  const authorImageHTML = getImageHTML({ src: authorImage, title: authorName });
+  const authorImageHTML = getImageHTML({ src: authorImage, title: authorName, size: 'xs' });
 
   const image = getImageHTML({
-    src: postImage, title, model: 'post', id
+    src: postImage, title, model: 'post', id, size: 'lg'
   });
   const video = getVideoHTML(postVideo);
   const mediaHTML = (video === false) ? image : video;
@@ -82,6 +86,7 @@ export const loadPostDetail = async ({
   PubSub.publish('reloadComments');
 };
 
+// Shows the post on the detail page
 export const createPost = (id) => {
   const wrapper = document.getElementById('post');
   const ModelServiceInstance = new ModelService('posts');

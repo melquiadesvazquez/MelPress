@@ -1,9 +1,11 @@
+// Append a list of components to a parent
 export const appendComponent = (parent, components) => {
   components.forEach((component) => {
     parent.appendChild(component);
   });
 };
 
+// Generates a "human" Twitter like date format
 export const formatDate = (tdate) => {
   let systemDate = new Date(Date.parse(tdate));
   const userDate = new Date();
@@ -37,6 +39,7 @@ export const formatDate = (tdate) => {
   return result;
 };
 
+// Validates a form using the native reportValidity functionality
 export const reportValidity = (form) => {
   if (HTMLFormElement.prototype.reportValidity) {
     form.reportValidity();
@@ -52,6 +55,7 @@ export const reportValidity = (form) => {
   }
 };
 
+// Exports all the values from a set of inputs into an collection
 export const getFormData = (formInputs) => {
   const formData = {};
   for (let i = 0; i < formInputs.length; i += 1) {
@@ -61,6 +65,7 @@ export const getFormData = (formInputs) => {
   return formData;
 };
 
+// Finds how many occurences appear on an array, in other words, counts duplicates
 export const countOccurences = (array) => array.reduce((prev, curr) => (prev[curr] = ++prev[curr] || 1, prev), {}); // eslint-disable-line
 
 

@@ -3,15 +3,16 @@ import { getVideoHTML } from 'components/video/video-component';
 import { formatDate } from 'utils/html';
 import ModelService from 'services/model-service';
 
+// Creates the content of each post for the homepage
 export const createPost = async ({
   id, author = 'No author', title = 'No title', description, postImage, postVideo, publishedAt
 } = {}, comments, index) => {
   const ModelServiceInstance = new ModelService('authors');
   const { authorName, authorImage } = await ModelServiceInstance.getModel(author);
-  const authorImageHTML = getImageHTML({ src: authorImage, title: authorName });
+  const authorImageHTML = getImageHTML({ src: authorImage, title: authorName, size: 'xs' });
 
   const image = getImageHTML({
-    src: postImage, title, model: 'post', id, link: true
+    src: postImage, title, model: 'post', id, link: true, size: 'sm'
   });
   const video = getVideoHTML(postVideo);
   const mediaHTML = (video === false) ? image : video;

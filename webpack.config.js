@@ -4,6 +4,7 @@ const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { CriticalPlugin } = require('webpack-plugin-critical');
+// Without the line below, dotenv-webpack module doesn't work properly on some pages
 const dotenv = require('dotenv').config({ path: path.join(__dirname, '/.env') }); // eslint-disable-line
 const Dotenv = require('dotenv-webpack');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');

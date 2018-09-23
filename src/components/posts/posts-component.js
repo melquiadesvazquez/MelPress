@@ -2,6 +2,7 @@ import { appendComponent, countOccurences } from 'utils/html';
 import { createPost } from 'components/post/post-component';
 import ModelService from 'services/model-service';
 
+// Loads the posts from the database
 const loadPosts = (json, posts) => {
   const updatedPosts = posts;
   if (json.length === 0) {
@@ -9,6 +10,7 @@ const loadPosts = (json, posts) => {
   } else {
     const ModelServiceInstance = new ModelService('comments');
     ModelServiceInstance.getModels().then((jsonComments) => {
+      // Counts the number of comments per post
       const countComments = countOccurences(jsonComments.map(comment => comment.post));
 
       const promises = json.map(
@@ -21,8 +23,9 @@ const loadPosts = (json, posts) => {
   }
 };
 
-export const updatePosts = (posts) => {
-  const wrapper = posts;
+// Shows all the posts on the homepage
+export const createPosts = () => {
+  const wrapper = document.getElementById('posts');
   const ModelServiceInstance = new ModelService('posts');
 
   wrapper.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
@@ -32,13 +35,6 @@ export const updatePosts = (posts) => {
   }).catch(() => {
     wrapper.innerHTML = 'There was an error, please reload';
   });
-};
-
-export const createPosts = () => {
-  const posts = document.getElementById('posts');
-  updatePosts(posts);
-
-  return posts;
 };
 
 export default {

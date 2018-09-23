@@ -1,5 +1,6 @@
 import { formatDate } from 'utils/html';
 
+// Creates the content of a comment
 export const createComment = async ({
   name, surname, title, description, publishedAt
 } = { title: 'No title', author: 'No author' }) => {

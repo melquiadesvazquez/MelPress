@@ -1,3 +1,4 @@
+// Generates the html code from a youtube embedded video url
 export const getVideoHTML = (src) => {
   let result = false;
   if (src !== undefined) {

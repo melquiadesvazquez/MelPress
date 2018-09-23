@@ -2,6 +2,7 @@ import ModelService from 'services/model-service';
 import { reportValidity, getFormData } from 'utils/html';
 import PubSub from 'pubsub-js';
 
+// Validates if all the letters are capitals
 const addCustomValidation = (input) => {
   if (input.value === input.value.toUpperCase()) {
     input.setCustomValidity('All capital letters not valid');
@@ -10,6 +11,7 @@ const addCustomValidation = (input) => {
   }
 };
 
+// Adds the error class if the input doesn't validate with the native checkValidity functionality
 const addErrorClass = (input) => {
   if (!input.checkValidity()) {
     input.classList.add('error');
@@ -18,6 +20,7 @@ const addErrorClass = (input) => {
   }
 };
 
+// Runs validations when the inputs are on focus/blur
 const handleValidation = (formInputs) => {
   for (let i = 0; i < formInputs.length; i += 1) {
     const input = formInputs[i];
@@ -34,6 +37,7 @@ const handleValidation = (formInputs) => {
   }
 };
 
+// Validates the form when this one is submitted
 export const updateCommentForm = (post) => {
   const commentForm = document.getElementById('comment-form');
   const submitFormButton = document.getElementById('comment-submit');
@@ -47,6 +51,7 @@ export const updateCommentForm = (post) => {
     submitFormButton.disable = true;
     reportValidity(commentForm);
     if (commentForm.checkValidity()) {
+      // Creates a new comment on the database (not working on the live demo)
       const ModelServiceInstance = new ModelService('comments');
       ModelServiceInstance.postModel(Object.assign({
         post, publishedAt: new Date().toISOString()
@@ -57,6 +62,7 @@ export const updateCommentForm = (post) => {
             PubSub.publish('reloadComments');
             notice.innerHTML = 'Comment sent';
 
+            // Hides the notice after 3 seconds
             setTimeout(() => { notice.innerHTML = ''; }, 3000);
           }
         }
