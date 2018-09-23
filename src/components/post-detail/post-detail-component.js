@@ -29,7 +29,7 @@ const setInitialLikeValue = (likeButton, liked, likes) => {
 };
 
 export const loadPostDetail = async ({
-  id, author = 'No author', likes = 0, title = 'No title', content, postImage, postVideo, publishedAt
+  id, author = 'No author', likes = 0, title = 'No title', content = 'No content', postImage, postVideo, publishedAt
 } = {}) => {
   const ModelServiceInstance = new ModelService('authors');
   const { authorName, authorImage } = await ModelServiceInstance.getModel(author);
