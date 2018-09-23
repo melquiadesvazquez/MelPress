@@ -3,14 +3,13 @@
 .post-img {
   order: 1;
   overflow: hidden;
+  display: flex;
+  align-items: center;
   margin: 0;
 
-  img {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 100%;
-  }
+  a {display:block;}
+
+  img {width: 100%;}
 }
 
 @include for-tablet-landscape {

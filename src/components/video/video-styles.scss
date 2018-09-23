@@ -3,13 +3,15 @@
 .post-video, {
   order: 1;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin: 0;
   
   .post-video-wrapper {
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
     padding-bottom: 56.25%; /* 16:9 */
     height: 0;
+    width: 100%;
     
     iframe {
       position: absolute;

@@ -22,6 +22,7 @@
     .box-col {
       position: relative;
       width: 100%;
+      min-height: 1px;
       padding-right: ($grid-gutter-width / 2);
       padding-left: ($grid-gutter-width / 2);
 
@@ -60,7 +61,7 @@
 
           &.wide {
             flex: 0 0 80%;
-            max-width: 800%;
+            max-width: 80%;
           }
         }
       } 
